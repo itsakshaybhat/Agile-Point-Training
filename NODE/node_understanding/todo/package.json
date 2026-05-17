@@ -1,0 +1,20 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Creating the to-do app using the node js only",
+  "keywords": [
+    "todo",
+    "node",
+    "file-system"
+  ],
+  "license": "ISC",
+  "author": "Akshay Bhat",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

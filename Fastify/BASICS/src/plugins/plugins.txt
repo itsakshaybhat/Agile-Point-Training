@@ -1,0 +1,27 @@
+In Fastify everything is plugin,
+
+auth plugins (JWT , authentication)
+user plugins ( user routes)
+product plugins (product routes)
+db plugins (database connections)
+
+src/
+ ├── plugins/
+ │     ├── jwt.js
+ │     ├── db.js
+ │
+ ├── routes/
+ │     ├── users.js
+ │     ├── products.js
+ │
+ ├── app.js
+
+
+|      Plugin          | Purpose      |
+| -------------------- | ------------ |
+| `@fastify/jwt`       | JWT auth     |
+| `@fastify/cookie`    | Cookies      |
+| `@fastify/cors`      | CORS         |
+| `@fastify/static`    | Static files |
+| `@fastify/multipart` | File uploads |
+| `@fastify/redis`     | Cache/ Redis |

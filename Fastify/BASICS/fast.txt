@@ -1,0 +1,48 @@
+Incoming Request
+       ↓
+Routing
+       ↓
+Validation
+       ↓
+Hooks
+       ↓
+Handler
+       ↓
+Serialization
+       ↓
+Response
+
+Global middleware chain(Express) <==> Encapsulated plugin graph(Fastify)
+
+fastify.addhooks("preHandler", async (req, reply)=>{});
+
+Request > preParsing > preValidation > Validation > preHandler > Handler > preSerialization > onSend > Response
+
+
+request => request.body, request.params, request.query, request.headers
+
+Qurey parameter > searching, filtering, pagination, sorting, Optimal Information
+
+
+request = {
+   params: {},
+   query: {},
+   body: {},
+   headers: {},
+   method: "GET",
+   url: "/users"
+}
+
+
+Content type: json -> application/json
+              HTML -> text/html
+              plain text -> text/plain
+
+Automatically sets to the application/json
+
+Serialization: converting the JS Object to the JSON while sending the reply.
+
+sending the html>reply.type('text/html').send(` <h1>Hi</h1> `);
+
+
+fastify is plugin driven architecture

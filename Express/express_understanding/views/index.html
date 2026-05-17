@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Users App</h1>
+        <p class="subtitle">Press Show Users to load the list. Then you can search by id, add, edit, or delete users.</p>
+        
+        
+        <div class="toolbar">
+            <button type="button" id="showUsersBtn" class="secondary-btn">Show Users</button>
+            <span id="statusMessage" class="status-message"></span>
+        </div>
+
+
+        <div class="search-bar">
+            <input type="number" id="searchUserId" placeholder="Search user by id">
+            <button type="button" id="searchUserBtn" class="secondary-btn">Search</button>
+        </div>
+        
+        
+        <form id="userForm">
+            <input type="text" id="userName"  placeholder="Enter user name" required>
+            <button type="submit">Add User</button>
+        </form>
+        
+        
+        <div id="userDetail" class="user-detail" hidden></div>
+        
+        
+        <div id="userList" class="user-list">
+            
+        </div>
+    </div>
+
+    <script src = "./script.js"></script>
+</body>
+</html>

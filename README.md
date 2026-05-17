@@ -1,12 +1,18 @@
 <h1>Agile — Workspace Overview</h1>
 <p>This document summarizes the main folders, notable files, and quick run/publish instructions for the <strong>Agile</strong> workspace.</p>
 
+<h2>What I changed</h2>
+<ul>
+  <li>Added a root <code>.gitignore</code> so generated files, dependencies, logs, and editor clutter stay out of GitHub.</li>
+  <li>Kept this top-level README as the global map for the whole workspace.</li>
+</ul>
+
 <h2>Ready-to-publish projects</h2>
 <ul>
   <li><strong>REST-API</strong> (REST-API/) — Express + Mongoose app exposing CRUD endpoints at <code>/api/user</code>. See <a href="REST-API/README.md">REST-API/README.md</a>.</li>
   <li><strong>cpu-benchmark</strong> (cpu-benchmark/) — CPU blocking vs worker-thread examples: <code>no-worker.js</code>, <code>with-worker.js</code>, <code>task.js</code>. See <a href="cpu-benchmark/README.md">cpu-benchmark/README.md</a>.</li>
   <li><strong>WebPageApplication</strong> (WebPageApplication/) — Tiny Node HTTP server serving <code>public/index.html</code> on port 8080. See <a href="WebPageApplication/README.md">WebPageApplication/README.md</a>.</li>
-  <li><strong>Express</strong> (Express/) — Simple Express example with basic routes.</li>
+  <li><strong>Express</strong> (Express/) — Simple Express example with basic routes and several learning subfolders.</li>
 </ul>
 
 <h2>Learning & demos</h2>
@@ -17,6 +23,15 @@
 
 <h2>Project/</h2>
 <p>Contains exercises and a generated Salesforce metadata folder. The generated <code>.sfdx</code> content under <code>Project/.sfdx</code> was removed from the workspace to avoid pushing generated files.</p>
+
+<h2>Ignore rules</h2>
+<p>The root <code>.gitignore</code> now covers common generated content across the workspace, including:</p>
+<ul>
+  <li><code>node_modules/</code> in every nested project</li>
+  <li>build outputs such as <code>dist/</code>, <code>build/</code>, <code>out/</code>, <code>coverage/</code>, and <code>.next/</code></li>
+  <li>logs, temp files, environment files, and local editor folders</li>
+</ul>
+<p>If any generated dependency files are already tracked in Git, they will still need to be removed from the index separately before the ignore rule takes full effect.</p>
 
 <h2>Files cleaned</h2>
 <p>I removed TODO/FIXME and dead commented code from the following learning files:</p>
@@ -76,7 +91,7 @@ git push -u origin main
 <h2>Notes & next steps</h2>
 <ul>
   <li>If you want me to remove more commented examples from other learning files, tell me which folders to target.</li>
-  <li>If you want, I can run the git commands here (I will need the remote URLs and permission to push).</li>
+  <li>If you want, I can also help clean tracked generated files out of the Git index so the ignore rules apply fully.</li>
 </ul>
 
 <hr>

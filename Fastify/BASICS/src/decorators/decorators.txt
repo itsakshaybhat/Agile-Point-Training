@@ -1,0 +1,10 @@
+Decorators: Extend Fastify objects with custom functionality
+
+| Object           | Decorator Method    |
+| ---------------- | ------------------- |
+| Fastify instance | `decorate()`        |
+| Request object   | `decorateRequest()` |
+| Reply object     | `decorateReply()`   |
+|__________________|_____________________|
+
+

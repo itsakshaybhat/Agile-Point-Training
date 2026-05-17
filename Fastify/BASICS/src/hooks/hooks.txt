@@ -1,0 +1,20 @@
+Request
+   ↓
+onRequest
+   → logging
+   ↓
+preHandler
+   → JWT verification / Authentication(Verify JWT
+                                        Track requests
+                                        Check permissions)
+   ↓
+handler
+   → business logic(Create user
+                    Fetch products
+                    Update order)
+   ↓
+onSend
+   → add response metadata
+   ↓
+onResponse
+   → analytics tracking
