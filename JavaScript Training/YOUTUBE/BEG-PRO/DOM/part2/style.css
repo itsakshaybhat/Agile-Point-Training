@@ -1,0 +1,14 @@
+#box{
+    width: 100px;
+    height: 250px;
+    background-color: dodgerblue;
+    color: white;
+    border: 1px solid black;
+}
+
+.para{
+    color:red;
+    background-color: yellow;
+    font-size: 30px;
+}
+

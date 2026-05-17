@@ -1,0 +1,12 @@
+*{
+    background-color: blueviolet;
+    margin: 0;
+    padding: 0 ;
+    align-items: center;
+    text-align: center;
+    margin-top : 30%;
+}
+
+.heading-class{
+    background-color: bisque;
+}

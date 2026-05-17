@@ -1,0 +1,24 @@
+const aliceTumbling = [
+  { transform: 'rotate(0) scale(1)' },
+  { transform: 'rotate(360deg) scale(0)' }
+];
+
+const aliceTiming = {
+  duration: 900,
+  iterations: 2,
+  fill: 'forwards'
+};
+
+const alice1 = document.querySelector("#alice1");
+const alice2 = document.querySelector("#alice2");
+const alice3 = document.querySelector("#alice3");
+
+async function playAnimationSequence() {
+  await alice1.animate(aliceTumbling, aliceTiming).finished;
+  await alice2.animate(aliceTumbling, aliceTiming).finished;
+  await alice3.animate(aliceTumbling, aliceTiming).finished;
+}
+
+playAnimationSequence().catch((error) => {
+  console.error("Animation sequence failed:", error);
+});

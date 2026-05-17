@@ -1,0 +1,48 @@
+*{
+    padding:0%;
+    margin-top: 50;
+}
+
+body{
+    background-color: bisque;
+
+}
+
+.heading-class{
+    color: red;
+    background-color: yellow;
+    /* margin-top: 40vh; */
+    min-width: 100vh;
+    align-content: center;
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    font-size: larger;
+}
+
+button{
+    background-color: blue;
+    color:white;
+    align-content:center;
+    text-align:center;
+    margin-left :100vh;
+    padding:8px;
+    min-width: auto;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;;
+    text-align:center;
+
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+    background-color: aquamarine;
+}

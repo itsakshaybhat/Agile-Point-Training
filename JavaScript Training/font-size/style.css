@@ -1,0 +1,40 @@
+body{
+    font-family: "Helvetica", sans-serif;
+    font-size:12px;
+    background: #000;
+}
+
+.hi{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 5%;
+    gap: 2rem;
+
+}
+button{
+    color: rgb(221, 13, 13);
+    background-color: rgb(242, 246, 244);
+    font-size: 12px;
+    align-items: center;
+    display: flex;
+    flex-direction:row;
+    border-radius:2rem ;
+
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2{
+    font-size: 1.2em;
+}
+
+p{
+    color: white;
+    font-size: 2em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 2rem;
+
+}

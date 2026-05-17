@@ -1,0 +1,5 @@
+Hello, World!
+This is a sample text file.
+You can read, write, and append to this file using Node.js fs module.
+Node.js makes working with files easy and efficient.
+Happy coding!

@@ -1,0 +1,1 @@
+// map_filter examples cleaned: removed commented demo code

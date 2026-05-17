@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Learning the HTTP Servers",
+  "license": "ISC",
+  "author": "Akshay Bhat",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "url": "^0.11.4"
+  }
+}
