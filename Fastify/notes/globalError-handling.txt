@@ -1,0 +1,15 @@
+app.setErrorHandler((error, request, reply) => {
+
+   reply.status(500).send({
+      success: false,
+      message: error.message
+   });
+}); // Internally this works like this.
+
+Yes, you can simply `throw new Error("made by me")`, and Fastify will automatically catch it and pass it to `setErrorHandler()` if one is defined.
+
+Fastify’s built-in error handler is internal and has no public name; it runs automatically when you do not define `setErrorHandler()`.
+
+If `setErrorHandler()` is not defined, Fastify uses its built-in error handler and returns a default JSON error response.
+
+
