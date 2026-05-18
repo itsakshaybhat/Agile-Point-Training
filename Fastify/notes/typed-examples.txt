@@ -1,0 +1,33 @@
+| System          | Purpose            |
+| --------------- | ------------------ |
+| TypeScript      | Developer safety   |
+| Fastify schemas | Runtime validation |
+
+
+type BodyType = {
+    username: string;
+};
+
+type ParamsType = {
+    id: string;
+};
+
+type QueryType = {
+    page: number;
+};
+
+type ReplyType = {
+    success: boolean;
+};
+
+app.post<{
+    Body: BodyType;
+    Params: ParamsType;
+    Querystring: QueryType;
+    Reply: ReplyType;
+}>('/users/:id', async (request, reply) => {
+
+    return {
+        success: true
+    };
+});
