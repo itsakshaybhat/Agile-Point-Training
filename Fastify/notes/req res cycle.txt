@@ -1,0 +1,68 @@
+Incoming Request (GET /users)
+       ↓
+Routing (Which route matches this request?)
+       ↓
+onRequest (first lifecyle hook) req.body, req.headers, req.url but not usually req.body
+       ↓
+preParsing (raw request stream exists)
+       ↓
+Content-Type Parsing (Create JS Object and store in the req.body)
+       ↓
+preValidation (request.body.role =  user;before validation executes)
+       ↓
+Validation (Checking the schema structure)
+       ↓
+preHandler (auth happens here)
+       ↓
+Route Handler (Business logic)
+       ↓
+preSerialization (modifying the outgoing response)
+       ↓
+Serialization (object to JSON Object)
+       ↓
+onSend (modify headers, logging etc)
+       ↓
+Response Sent (using socket http response sent)
+       ↓
+onResponse ( last lifecycle hook, after the response )
+
+
+///Request Flow 
+
+Request comes
+    ↓
+onRequest
+    → request logging
+    ↓
+preValidation
+    → normalize body
+    ↓
+Validation
+    → schema checking
+    ↓
+preHandler
+    → JWT verification
+    ↓
+Handler
+    → DB query
+    ↓
+preSerialization
+    → wrap response
+    ↓
+Serialization
+    → optimized JSON conversion
+    ↓
+onSend
+    → headers added
+    ↓
+onResponse
+    → analytics tracking
+
+
+| Feature          | Lifecycle Stage      |
+| ---------------- | -------------------- |
+| Auth             | preHandler           |
+| Validation       | validation stage     |
+| Logging          | onRequest/onResponse |
+| Compression      | onSend               |
+| Error formatting | error handler        |

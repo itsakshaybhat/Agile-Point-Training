@@ -1,0 +1,74 @@
+Independent mini Fastify app using the plugins
+Root App
+   ├── User Plugin
+   ├── Admin Plugin
+   └── Payment Plugin
+
+
+import Fastify from 'fastify';
+
+const app = Fastify();
+
+async function adminPlugin(app: any) {
+
+    app.addHook('preHandler', async () => {
+        console.log('Admin Hook');
+    });
+
+    app.get('/dashboard', async () => {
+        return {
+            admin: true
+        };
+    });
+}
+
+async function userPlugin(app: any) {
+
+    app.get('/profile', async () => {
+        return {
+            user: true
+        };
+    });
+}
+
+app.register(adminPlugin, {
+    prefix: '/admin'
+}); //This will make the normal function as plugins.
+
+app.register(userPlugin, {
+    prefix: '/user'
+});
+
+fastify internally creates: Plugin Context Tree NOT one giant global app.
+
+Root Context
+   ├── Admin Context
+   │      ├── hooks
+   │      ├── decorators
+   │      └── routes
+   │
+   └── User Context
+          ├── hooks
+          ├── decorators
+          └── routes
+
+async function authPlugin(app: any) { //This decorator exists ONLY inside plugin scope,not automatically global.
+
+    app.decorate('authenticate', async function () {
+        console.log('auth');
+    });
+}
+
+Parent shares downward
+Child does not share upward
+
+app.register(async function pluginA(app) {
+
+    app.decorate('a', true);
+
+    app.register(async function pluginB(app) {
+
+        console.log(app.a);
+
+    });
+});
