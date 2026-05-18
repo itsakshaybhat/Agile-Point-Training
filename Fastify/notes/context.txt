@@ -1,0 +1,58 @@
+Context is the surrounding information or environment needed to understand or execute something correctly.
+
+Root Context
+   ├── Auth Context
+   │      ├── auth hooks
+   │      └── auth decorators
+   │
+   ├── Admin Context (Independent from other contexts)
+   │      ├── admin routes
+   │      └── admin hooks
+   │
+   └── User Context
+          └── user routes
+
+Each plugin gets backpack containing:
+    hooks
+    decorators
+    routes
+    schemas
+    children
+When request enters plugin area,Fastify checks THAT backpack.
+
+
+async function adminPlugin(app: any) {
+
+   app.decorate('adminOnly', true);
+
+   app.addHook('preHandler', async () => {
+      console.log('Admin auth');
+   });
+}
+
+
+Without context system:
+
+Fastify cannot track:
+                    plugin hierarchy
+                    hook scope
+                    route ownership
+                    decorator visibility
+
+Root
+ └── Auth
+       └── Admin
+
+Hierarchy forms.
+
+Fastify basically builds:
+
+Context Tree
++
+Routing Table
++
+Hook Chains
++
+Validators
++
+Serializers
