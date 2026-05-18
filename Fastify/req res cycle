@@ -1,0 +1,27 @@
+Incoming Request (GET /users)
+       ↓
+Routing (Which route matches this request?)
+       ↓
+onRequest
+       ↓
+preParsing
+       ↓
+Content-Type Parsing
+       ↓
+preValidation
+       ↓
+Validation
+       ↓
+preHandler
+       ↓
+Route Handler
+       ↓
+preSerialization
+       ↓
+Serialization
+       ↓
+onSend
+       ↓
+Response Sent
+       ↓
+onResponse
