@@ -1,48 +1,110 @@
 import { FastifyInstance } from 'fastify';
+import { noteService } from '../services/note-service.js';
+import { noteBodySchema, noteParamSchema } from '../schemas/note-schema.ts';
 
-export default async function notesRoutes(app: FastifyInstance){
-    app.post('/notes', async (request, reply)=>{
+export default async function notesRoutes(app: FastifyInstance) {
+
+    app.post('/notes', {
+        schema: {
+            body: noteBodySchema,
+        },
+    }, async (request, reply) => {
+
         const body = request.body as {
-            title:string;
-            content:string;
+            title: string;
+            content: string;
         };
+
         const note = {
             id: crypto.randomUUID(),
-            title:body.title,
-            content:body.content,
+            title: body.title,
+            content: body.content,
             createdAt: new Date(),
         };
-        const createdNote = app.notesStore.create(note);
+
+        const createdNote = noteService.create(note);
+
         return reply.status(201).send(createdNote);
-    })
+    });
 
-    app.get('/notes', async()=>{
-        return app.notesStore.findAll();
-    })
+    app.get('/notes', async () => {
+        return noteService.findAll();
+    });
 
-    app.get('/notes/:id',async(request,reply)=>{
+    app.get('/notes/:id', {
+        schema: {
+            params: noteParamSchema,
+        },
+    }, async (request, reply) => {
+
         const params = request.params as {
-            id:string;
-        }
-        const note = app.notesStore.findById(params.id);
-        if(!note){
-            return reply.status(404).send({
-                message: "Note not found",
-            })
-        }
-        return note;
-    })
+            id: string;
+        };
 
-    app.delete('/notes:id',async(request, reply)=>{
-        const params = request.params as {
-            id : string;
-        }
-        const deleted = app.notesStore.delete(params.id);
-        if(!deleted){
+        const note = noteService.findById(params.id);
+
+        if (!note) {
             return reply.status(404).send({
                 message: 'Note not found',
-            })
+            });
         }
+
+        return note;
+    });
+
+    app.delete('/notes/:id', {
+        schema: {
+            params: noteParamSchema,
+        },
+    }, async (request, reply) => {
+
+        const params = request.params as {
+            id: string;
+        };
+
+        const deleted = noteService.delete(params.id);
+
+        if (!deleted) {
+            return reply.status(404).send({
+                message: 'Note not found',
+            });
+        }
+
         return reply.status(204).send();
-    })
+    });
+
+    app.put('/notes/:id', {
+        schema: {
+            params: noteParamSchema,
+            body: noteBodySchema,
+        },
+    }, async (request, reply) => {
+
+        const params = request.params as {
+            id: string;
+        };
+
+        const body = request.body as {
+            title: string;
+            content: string;
+        };
+
+        const existingNote = noteService.findById(params.id);
+
+        if (!existingNote) {
+            return reply.status(404).send({
+                message: 'Note not found',
+            });
+        }
+
+        const updatedNote = {
+            ...existingNote,
+            title: body.title,
+            content: body.content,
+        };
+
+        noteService.create(updatedNote);
+
+        return updatedNote;
+    });
 }
