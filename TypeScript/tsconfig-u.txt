@@ -1,0 +1,143 @@
+"rootDir"-> tells my root directory source code is here
+src/
+ ├── app.ts
+ ├── routes/
+
+ "outDir"-> tells about the compiled JS goes into dist.
+ src/app.ts
+    ↓ compile
+dist/app.js
+
+This means production runs the JS from the dist
+
+"module" : "nodenext"
+Using modern ES Module System
+
+"moduleResolution": "nodenext"
+Resolving the imports same way as modern Node.js does.
+'module': 'nodenext' is needed for this
+
+'target': 'es2022'
+The JS which the TS will generate that uses the es22 rules
+
+'types': []
+This usually include the 'node' and having the objects like process, __dirname, Buffer, Node APIs typing.
+
+'sourceMap' : true
+dist/app.js=> src/app.ts Best for debugging, tells the exact line of error in the code.
+
+'declaration':true
+This will create .d.ts file, 
+type defination files are these.
+Used when:
+
+building libraries/packages
+exposing types to other projects
+
+'declarationMap': true
+Maps declaration files back to source TS
+Better debugging/navigation
+
+'strict': true
+strong type checking
+Prevents:
+        undefined errors
+        wrong types
+        unsafe code
+
+'noUncheckedIndexedAccess' : true
+Makes array/object access safer without this arr[0] is assumed that it always exists.
+with this possibly arr[0] is undefined.
+
+'exactOptionalPropertyTypes': true
+Makes optional properties truly optional
+type User = {
+  name?: string
+}
+
+Now:
+omitted ≠ undefined automatically
+Stricter correctness.
+
+'verbatimModuleSyntax': false
+Allows TS to transform imports when needed, compatibility easier
+
+'isolatedModules': true
+Compilation of each file is independent
+
+'noUncheckedSideEffectImports':true
+Warns about imports that may execute hidden code
+
+
+"exactOptionalPropertyTypes": true
+
+Makes optional properties truly optional.
+
+Example:
+
+type User = {
+  name?: string
+}
+
+Now:
+
+omitted ≠ undefined automatically
+
+Stricter correctness.
+
+Module Handling
+"verbatimModuleSyntax": false
+
+Allows TypeScript to transform imports when needed.
+
+Keeps compatibility easier.
+
+"isolatedModules": true
+
+Each file can compile independently.
+
+Needed by:
+
+modern tooling
+bundlers
+faster compilation
+Side Effects
+"noUncheckedSideEffectImports": true
+
+Warns about imports that may execute hidden code.
+import "./config"
+
+because importing can run code immediately.
+
+
+'moduleDetection': 'force'
+Treating everyfile as module
+
+'skipLibCheck': true
+Skips checking typings inside node_modules
+Compilation faster 
+
+'esModuleInterop' : true
+Always CJS packages work nicely with ES imports
+without this import express from 'express'; may fail
+
+'allowImportingTsExtentions': true
+import app from "./app.ts"
+
+Normally TS dislikes .ts in imports.
+
+"include": ["src"]
+
+Only compile files inside src.
+
+Cleaner and faster.
+
+                TypeScript Code (src)
+                        ↓
+                tsconfig rules applied
+                        ↓
+                JavaScript generated
+                        ↓
+                dist folder
+                        ↓
+                Node.js runs it
