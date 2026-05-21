@@ -1,0 +1,26 @@
+fastify.register(async function (app) {
+
+  app.get('/warn', {
+    logLevel: 'warn',
+
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            route: { type: 'string' }
+          }
+        }
+      }
+    }
+
+  }, async function () {
+
+    return {
+      route: 'warn'
+    }
+  })
+
+}, {
+  prefix: '/v1'
+})
