@@ -1,0 +1,56 @@
+import Fastify from 'fastify';
+const fastify = Fastify();
+
+fastify.register((fastify:any, options:any)=>{
+    fastify.addContentTypeParser('application/json',function(request, payload, done){
+        jsonParser(payload, (err,done)=>{
+            done(err,body);
+        })
+    })
+})
+
+if(!fastify.hasContentTypeParser('application/jsoff')){
+    fastify.addContentTypeParser('application/jsoff', function (request, payload, done){
+        jsoffParser(payload, (err, body)=>{
+            done(err, body);
+        })
+    })
+}
+
+fastify.addContentTypeParser('text/xml', function (request, payload, done) {
+  xmlParser(payload, function (err, body) {
+    done(err, body)
+  })
+})
+
+// Removes the both built-in content type parsers so that only the content type parser for text/html is available
+fastify.removeContentTypeParser(['application/json', 'text/plain'])
+
+//Removes all the content type parsers
+fastify.removeAllContentTypeParsers()
+
+fastify.addContentTypeParser('text/xml', function (request, payload, done) {
+  xmlParser(payload, function (err, body) {
+    done(err, body)
+  })
+})
+
+fastify.addContentTypeParser('application/json',{parseAs:'string'}, function(req, body, done){
+    try{
+        const json = JSON.parse(body);
+        done(null, json);
+    } catch (err) {
+        err.code = 400;
+        done(err, undefined);
+    }
+})
+
+fastify.addContentTypeParser('*', function (request, payload, done) {
+  let data = ''
+  payload.on('data', chunk => { data += chunk })
+  payload.on('end', () => {
+    done(null, data)
+  })
+  let file = JSON.parse(data);
+})
+
