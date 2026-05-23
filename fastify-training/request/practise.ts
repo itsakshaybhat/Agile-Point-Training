@@ -21,7 +21,7 @@ fastify.get('/test/:id',async(request, reply)=>{
 
     }
 })
-
+ 
 fastify.listen({port: 3000}, (err, address)=>{
     if(err){  
         fastify.log.info("There is error");
