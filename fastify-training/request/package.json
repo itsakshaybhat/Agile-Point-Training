@@ -2,9 +2,9 @@
   "name": "request",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "practise.ts",
   "scripts": {
-    "start": "tsx watch doc.ts"
+    "start": "tsx watch practise.ts"
   },
   "keywords": [],
   "author": "",
