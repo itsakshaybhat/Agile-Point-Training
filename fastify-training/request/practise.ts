@@ -21,6 +21,14 @@ fastify.get('/test/:id',async(request, reply)=>{
 
     }
 })
+
+fastify.post('/login', async(request, reply)=>{
+    return {
+        body: request.body,
+    }
+})
+
+fastify
  
 fastify.listen({port: 3000}, (err, address)=>{
     if(err){  
