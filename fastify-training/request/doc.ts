@@ -72,11 +72,10 @@ const validate5 = request
                         type: 'string'
                       }
                     }
-                  }, 200)
-                  }, 'body')
+                  })
+                });
 // console.log(validate5({ hello: 'world' })) // false
 // console.log(validate5.errors) // validation errors
-// })
-
 
 fastify.listen({port: 3000});
+ 
