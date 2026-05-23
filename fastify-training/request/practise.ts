@@ -28,7 +28,11 @@ fastify.post('/login', async(request, reply)=>{
     }
 })
 
-fastify
+fastify.get('/headers', async(request, reply)=>{
+    return{
+        headers: request.headers,
+    }
+})
  
 fastify.listen({port: 3000}, (err, address)=>{
     if(err){  
