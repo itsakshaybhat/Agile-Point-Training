@@ -1,0 +1,19 @@
+{
+  "name": "reply",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "doc.ts",
+  "scripts": {
+    "start" : "tsx watch doc.ts"
+  },
+  "devDependencies": {
+    "fastify": "^5.8.5",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}

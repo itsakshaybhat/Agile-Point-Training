@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import fs from 'node:fs';
 const fastify = Fastify();
 
 fastify.get('/', function(request, reply){
@@ -129,6 +130,48 @@ fastify.decorate('util',function util(){
 fastify.get('/trail',async function (req, rep){
     return (fastify as any).util();
 })
+
+fastify.get('/hijack', async(req, reply)=>{
+    reply.hijack();
+    reply.raw.end('hello world');
+    // reply.send() //serialize the object with fast-json-stringifyn
+    return Promise.resolve('this will be skipped');
+})
+
+fastify.get('/streams', async(req, reply)=>{
+    const stream = fs.createReadStream('some-file','utf8')
+    reply.header('Content-Type','application/octet-stream')
+    return reply.send(stream); //for async we need to use the return or await
+})
+
+fastify.get('/error', {
+  schema: {
+    response: {
+      501: {
+        type: 'object',
+        properties: {
+          statusCode: { type: 'number' },
+          code: { type: 'string' },
+          error: { type: 'string' },
+          message: { type: 'string' },
+          time: { type: 'string' }
+        }
+      }
+    }
+  }
+}, function (request, reply) {
+  const error = new Error('This endpoint has not been implemented')
+  reply.code(501).send(error)
+})
+
+
+fastify.setNotFoundHandler(function (request, reply) {
+  reply
+    .code(404)
+    .type('text/plain')
+    .send('a custom not found')
+})
+
 
 
 fastify.listen({port: 3000}, (err,address)=>{
