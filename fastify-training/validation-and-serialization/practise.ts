@@ -99,8 +99,7 @@ const s1 = {
             }
         }
     }
-}
-}
+}}
 fastify.post('/the/url', s1,handler);
 
 const opts = {
@@ -183,7 +182,5 @@ const schemaCompilers: Record<string, Ajv> = {
 //     }
 //   }
 // })
-
-
 
 fastify.listen({port:3000});

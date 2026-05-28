@@ -8,15 +8,54 @@ fastify.get("/hello", {
             required: ["name"],
             properties: {
                 name: { type: "string" },
+                age: {type: "string"},
             }
         }
     }
-}, async (request: FastifyRequest<{ Querystring: { name: string } }>) => {
+}, async (request: FastifyRequest<{ Querystring: { name: string , age: number} }>) => {
     console.log("Handler executed");
 
     return {
-        message: `Hello ${request.query.name}`,
+        message: `Hello ${request.query.name} Age of ${request.query.age}`,
     };
+});
+
+fastify.post("/user/:id", {
+    schema: {
+        params: {
+            type: "object",
+            required: ["id"],
+            properties: {
+                id: {
+                    type: "number",
+                }
+            }
+        },
+        headers: {
+            type: "object",
+            required: ["x-role"],
+            properties: {
+                "x-role": {
+                    type: "string",
+                }
+            }
+        }, 
+        body:{
+            type: "object",
+            required: ["name"],
+            properties: {
+                name: {type: "string"},
+                age: {type: "number"},
+            }
+        }
+    }
+},async function (request){
+    console.log("Handler Executed");
+    return {
+        params: request.params,
+        headers: request.headers,
+        body: request.body,
+    }
 });
 
 fastify.listen({ port: 3000 }, (err, address) => {
@@ -26,3 +65,5 @@ fastify.listen({ port: 3000 }, (err, address) => {
     }
     console.log(`\nServer Started at ${address}`);
 })
+
+//joi is a schema validator
