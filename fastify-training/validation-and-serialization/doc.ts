@@ -75,7 +75,9 @@ let schema = {
         type: "object",
         required: ["name"],
         properties: {
-            name: {type: "string"}
+            name: {type: "string", errorMessage: {
+                type: "Bad name"
+            }}
         }
     }
 }
