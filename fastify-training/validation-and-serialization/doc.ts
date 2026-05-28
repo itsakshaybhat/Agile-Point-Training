@@ -67,3 +67,21 @@ fastify.listen({ port: 3000 }, (err, address) => {
 })
 
 //joi is a schema validator
+
+//Attach Validation
+
+let schema = {
+    body: {
+        type: "object",
+        required: ["name"],
+        properties: {
+            name: {type: "string"}
+        }
+    }
+}
+fastify.post('/', {schema, attachValidation: true}, function(req, reply){
+    if(req.validationError){
+        reply.code(400).send(req.validationError);
+    }
+    
+})
