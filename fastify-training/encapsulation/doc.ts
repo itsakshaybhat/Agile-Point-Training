@@ -1,5 +1,7 @@
 import Fastify from 'fastify';
+import fastifyPlugin from 'fastify-plugin';
 const fastify = Fastify({logger: true});
+
 
 fastify.decorateRequest('answer', 42);
 
@@ -42,7 +44,7 @@ fastify.register(async function publicContext(childServer){
             })
         }
     })
-    childServer.register(async function grandchildContext (grandChildServer){
+    childServer.register(fastifyPlugin(async function grandchildContext (grandChildServer){
         grandChildServer.decorateRequest('bar','akshay');
 
         grandChildServer.route({
@@ -57,7 +59,7 @@ fastify.register(async function publicContext(childServer){
                 })
             }
         })
-    })
+    }))
 })
 
 fastify.listen({port:3000});
