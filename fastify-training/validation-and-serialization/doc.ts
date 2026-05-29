@@ -68,6 +68,8 @@ fastify.listen({ port: 3000 }, (err, address) => {
 
 //joi is a schema validator
 
+// $id for the unique identifier for the schema,so by giving new identifier Ican refer that by $ref in another definations.
+
 //Attach Validation
 
 let schema = {
