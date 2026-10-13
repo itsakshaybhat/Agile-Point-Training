@@ -1,0 +1,37 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "Creating the production level project for the login and register page",
+  "keywords": [
+    "AuthN",
+    "Authorization",
+    "Security"
+  ],
+  "license": "ISC",
+  "author": "Akshay Bhat",
+  "type": "module",
+  "main": "app.ts",
+  "scripts": {
+    "start": "node src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^11.2.0",
+    "@fastify/jwt": "^10.1.0",
+    "@fastify/oauth2": "^8.2.0",
+    "@prisma/client": "^6.19.3",
+    "argon2": "^0.44.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "fastify-plugin": "^5.1.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "prisma": "^6.19.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

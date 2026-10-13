@@ -1,0 +1,124 @@
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Body */
+
+body{
+    min-height:100vh;
+
+    background-image:url("./images/page.jpeg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    font-family:"Poppins",sans-serif;
+}
+
+/* Heading */
+
+.title{
+    color:white;
+    font-size:clamp(2rem,5vw,4rem);
+    font-weight:700;
+    font-style:italic;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+/* Timer Container */
+
+.container{
+    width:90%;
+    max-width:500px;
+
+    text-align:center;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Timer */
+
+.time{
+    font-size:4rem;
+    font-weight:bold;
+    color:white;
+    margin-bottom:25px;
+}
+
+/* Buttons */
+
+button{
+    cursor:pointer;
+    transition:0.3s ease;
+    border:none;
+    border-radius:12px;
+}
+
+/* Start Button */
+
+.start{
+    background:#00c853;
+    color:white;
+    padding:12px 60px;
+    font-size:1.3rem;
+    font-weight:600;
+}
+
+.start:hover{
+    background:#009624;
+    transform:translateY(-3px);
+}
+
+/* Button Group */
+
+.btns{
+    margin-top:25px;
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* Control Buttons */
+
+.btnpause,
+.btnstop,
+.btnreset{
+
+    background:coral;
+    color:white;
+
+    padding:12px 22px;
+
+    font-size:1.1rem;
+    font-weight:500;
+}
+
+.btnpause:hover,
+.btnstop:hover,
+.btnreset:hover{
+
+    background:crimson;
+    transform:translateY(-3px);
+}
+
+/* Mobile */

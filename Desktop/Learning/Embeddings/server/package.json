@@ -1,0 +1,19 @@
+{
+  "name": "embeddings",
+  "version": "1.0.0",
+  "description": "Creating the project which demonstrate the embeddings use case",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.15.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
